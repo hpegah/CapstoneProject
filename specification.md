@@ -30,7 +30,7 @@ Data format:
 | Content   | See below        |
 | Signature | Signed by the CA's identity key |
 
-```
+``` abnf
 Content = CONTENT-TYPE TLV-LENGTH
           ca-prefix
           ca-info
