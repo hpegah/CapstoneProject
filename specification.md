@@ -5,7 +5,9 @@ The NDN testbed consists of multiple nodes, which are used to announce prefixes.
 
 ## 2. Proposal
 This project proposes an automated version of the NDNCERT protocol in which the certificate authority will be contacted by the testbed node (client), then authenticate the client through some challenge response, receive a certificate signing request (CSR) from client, and issue the certificate. The certificates will be generated with a specified lifetime so that clients must be issued new certificates frequently to prevent the issue of a compromised key.
+( <br> )
 This protocol uses proof of possession to ensure the client owns the private key corresponding to the public key signed in their x.509 certificate. This protocol assumes that the client has the CA installed in its list of trusted CAs, has generated a key value pair, and already possesses an x.509 certificate. The client then selects the CA and contacts the CA to receive the ownership challenge. The CA issues a random number (nonce), which the client then signs using its private key. This allows the CA to verify the client’s ownership of the private key. Along with the signed nonce, the client also creates a CSR to request a certificate from the CA. This CSR is signed with the client’s private key so the CA can verify the request. The CA then creates a certificate with the public key of the client and issues the certificate to the client.
+( <br> )
 Additionally, since there are some testbed nodes that have permission to act as routers in the testbed, there need to be certificates specific for these clients. These router nodes are specified on an access control list (ACL). This protocol will utilize another CA under the /router prefix which will authorize these specific clients using the ACL and issue them router certificates.
 
 ## 3. Specification
