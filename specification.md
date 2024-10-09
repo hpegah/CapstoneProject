@@ -30,6 +30,26 @@ Data format:
 | Content   | See below        |
 | Signature | Signed by the CA's identity key |
 
+```
+Content = CONTENT-TYPE TLV-LENGTH
+          ca-prefix
+          ca-info
+          *parameter-key
+          max-validity-period
+          ca-certificate
+ca-prefix = CA-PREFIX-TYPE TLV-LENGTH Name
+ca-info = CA-INFO-TYPE TLV-LENGTH *OCTET
+parameter-key = PARAMETER-KEY-TYPE TLV-LENGTH *OCTET
+max-validity-period = MAX-VALIDITY-PERIOD-TYPE TLV-LENGTH NonNegativeInteger
+ca-certificate = CA-CERTIFICATE-TYPE TLV-LENGTH CertificateV2
+```
+
+* ``` ca-prefix ```, bytes value, the TLV of NDN name of the CA. This name should be reachable to requesters. Note that the component CA is added by the NDNCERT protocol. Therefore, there is no need to include CA in the ca-prefix in the configuration file nor in the key name.
+* ``` ca-info ```, UTF-8 string value, a brief human-readable description of the CA.
+* A number of parameter-key, UTF-8 string value, a list of attributes required by the CA to identify the name for a requester in the PROBE step.
+* ``` max-validity-period ```, non negative integer value, maximum allowed validity period of the desired certificate in seconds.
+* ``` ca-certificate ```, bytes value, TLV of the CA's certificate.
+
 ### 3.2 Proof of Possession
 In oder to issue an NDN Cert to the client requestion, it needs to be verified that the client actually possesses the private key corresponding to the public key the certificate authority is signing. This protocol uses proof of possession in order to verify this.
 #### 3.2.1 Specification
