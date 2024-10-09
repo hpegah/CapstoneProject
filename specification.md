@@ -25,7 +25,7 @@ The CA profile is versioned and segmented, and can be fetched using the [NDN RDR
 #### 3.1.2 Packet Format
 Data format:
 | Field      | Description |
-| ----------- | ----------- |
+|------:|:------------|
 | Name      | ``` /<CA-Prefix>/CA/INFO/<version>/<segment> ```     |
 | Content   | See below        |
 | Signature | Signed by the CA's identity key |
@@ -63,10 +63,10 @@ Once the CA receieves the PoP request, the CA will generate a random number (non
 Interest format:
 
 | Field      | Description |
-| ----------- | ----------- |
+|------:|:------------|
 | Name      | ``` /<CA-Prefix>/CA/?? ```     |
 | Content   | See below        |
-| Signature | Signed by the private key corresponding to the certificate request |
+| Signature | Not required |
 
 ``` abnf
 Content = CONTENT-TYPE TLV-LENGTH
@@ -79,7 +79,7 @@ Data format:
 
 | Field | Description |
 |------:|:------------|
-| Name | `/<CA-prefix>/CA/NEW/<ParametersSha256Digest>` |
+| Name | `/<CA-prefix>/CA/??` |
 | FreshnessPeriod | 4 seconds |
 | Content | See below |
 | Signature | Signed by the CA's identity key |
