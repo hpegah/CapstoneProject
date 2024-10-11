@@ -26,12 +26,18 @@ The propsed x.509 Certificate Proof of Possession challenge uses the existing [N
 
 ### 3.2 Challenge Specification
 
-1. The requester transmits a CHALLENGE request with the following payload:
+1. The requester transmits a CHALLENGE request with the following payload, which contains the entire x.509 certificate chain and the DNS name of the requester converted to the NDN name:
 
    * selected-challenge: `509-possession`
-   * parameter-key: `issued-cert`
-   * parameter-value: TLV encoding of an existing x.509 certificate issued by the same or a different CA
-
+   * parameter-key: `root-cert`
+   * parameter-value: TLV encoding of the root certificate of an existing x.509 certificate chain issued to the requester
+   * parameter-key: `intermediate-cert`
+   * parameter-value: TLV encoding of the intermediate certificate of an existing x.509 certificate chain issued to the requester
+   * parameter-key: `entity-cert`
+   * parameter-value: TLV encoding of the end-entity certificate of an existing x.509 certificate chain issued to the requester
+   * parameter-key: `ndn-name`
+   * parameter-value: TLV encoding of the NDN name of the requester
+     
 2. The CA generates a 128-bit random number, and then responds with a CHALLENGE response with payload:
 
    * status: `1` (challenge in progress)
