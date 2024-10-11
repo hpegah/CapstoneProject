@@ -17,7 +17,7 @@ The propsed x.509 Certificate Proof of Possession challenge uses the existing [N
 ### 3.1 Overview
 
 * Challenge ID: `509-possession`
-* Description: The CA requires the requester to prove their ownership of a certificate issued by the same or a different CA.
+* Description: The CA requires the requester to prove their ownership of an x.509 certificate issued by the same or a different CA.
 * Required round trips: 2
 * Require out-of-band operations: no
 * Mutual Verification: no
