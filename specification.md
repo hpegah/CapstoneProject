@@ -30,7 +30,7 @@ The propsed x.509 Certificate Proof of Possession challenge uses the existing [N
 
    * selected-challenge: `509-possession`
    * parameter-key: `x509-cert`
-   * parameter-value: Chain of X.509 certificates, encoded as a TLV list of individual certs
+   * parameter-value: Chain of X.509 certificates, starting with the root cert and ending with the entity cert, encoded as a TLV list of individual certs
    * parameter-key: `ndn-name`
    * parameter-value: TLV encoding of the NDN name of the requester
      
