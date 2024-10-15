@@ -29,12 +29,8 @@ The propsed x.509 Certificate Proof of Possession challenge uses the existing [N
 1. The requester transmits a CHALLENGE request with the following payload, which contains the entire x.509 certificate chain and the DNS name of the requester converted to the NDN name:
 
    * selected-challenge: `509-possession`
-   * parameter-key: `root-cert`
-   * parameter-value: TLV encoding of the root certificate of an existing x.509 certificate chain issued to the requester
-   * parameter-key: `intermediate-cert`
-   * parameter-value: TLV encoding of the intermediate certificate of an existing x.509 certificate chain issued to the requester
-   * parameter-key: `entity-cert`
-   * parameter-value: TLV encoding of the end-entity certificate of an existing x.509 certificate chain issued to the requester
+   * parameter-key: `x509-cert`
+   * parameter-value: Chain of X.509 certificates, encoded as a TLV list of individual certs
    * parameter-key: `ndn-name`
    * parameter-value: TLV encoding of the NDN name of the requester
      
@@ -51,7 +47,7 @@ The propsed x.509 Certificate Proof of Possession challenge uses the existing [N
 
    * selected-challenge: `possession`
    * parameter-key: `proof`
-   * parameter-value: a signature over the 128-bit random number
+   * parameter-value: an ASN.1 signature over the 128-bit random number
 
 4. The CA validates the provided certificate against its policy, and checks the proof signature against the public key enclosed in the provided certificate.
 
