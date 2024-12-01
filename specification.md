@@ -10,7 +10,7 @@ This protocol uses proof of possession to ensure the client owns the private key
 
 Additionally, since there are some testbed nodes that have permission to act as routers in the testbed, there need to be certificates specific for these clients. These router nodes are specified on an access control list (ACL). This protocol will utilize another CA under the /router prefix which will authorize these specific clients using the ACL and issue them router certificates.
 
-## 3. x.509 Proof Of Possession Challenge Specification
+## 3. X.509 Proof Of Possession Challenge Specification
 
 The propsed x.509 Certificate Proof of Possession challenge uses the existing [NDNCERT Protocol](https://github.com/named-data/ndncert/wiki/NDNCERT-Protocol-0.3) specification. The x.509 Certificate Proof of Possession specification will be an additional challenge type and is based of the [NDNCERT Proof of Possession challenge type](https://github.com/named-data/ndncert/wiki/NDNCERT-Protocol-0.3-Challenges).
 
