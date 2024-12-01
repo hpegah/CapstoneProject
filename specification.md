@@ -16,7 +16,7 @@ The propsed x.509 Certificate Proof of Possession challenge uses the existing [N
 
 ### 3.1 Overview
 
-* Challenge ID: `x509-possession`
+* Challenge ID: `x509_possession`
 * Description: The CA requires the requester to prove their ownership of an x.509 certificate issued by the same or a different CA.
 * Required round trips: 2
 * Require out-of-band operations: no
@@ -28,7 +28,7 @@ The propsed x.509 Certificate Proof of Possession challenge uses the existing [N
 
 1. The requester transmits a CHALLENGE request with the following payload, which contains the entire x.509 certificate chain:
 
-   * selected-challenge: `509-possession`
+   * selected-challenge: `509_possession`
    * parameter-key: `issued-cert`
    * parameter-value: Chain of X.509 certificates, starting with the entity cert and ending with the root cert, encoded as a base64 string
      
